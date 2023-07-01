@@ -1,12 +1,17 @@
 package creating
 
 import (
-	"log"
+	"fmt"
 	"os"
 )
 
-func createFolder(name string, path string) {
+func (w *WorkWithElements) CreateFolder(name string) {
 	if err := os.Mkdir(name, os.ModePerm); err != nil {
-		log.Fatal(err)
+		fmt.Println(err.Error())
+	}
+}
+func (w *WorkWithElements) CreateArch(workWithElems WorkWithElements, myAppName string, path string) {
+	for i := 0; i < len(w.dirs); i++ {
+		workWithElems.CreateFolder(fmt.Sprintf("%s%s", myAppName, w.dirs[i]))
 	}
 }
